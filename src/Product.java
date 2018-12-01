@@ -5,11 +5,9 @@ import javafx.scene.image.Image;
 public class Product {
     private String make, model, variant;
     private Double price;
-    private Integer year;
-    private Integer quantity;
+    private Integer year, quantity;
     private Image image;
-
-    public Product(String make, String model, String variant, Double price, Integer year, Integer quantity, Image image) {
+    public Product( String make, String model, String variant, Double price, Integer year, Integer quantity, Image image) {
         setMake(make);
         setModel(model);
         setVariant(variant);
@@ -86,6 +84,8 @@ public class Product {
     public void setImage(Image image) {
         this.image = image;
     }
+
+
 
     public void sellProduct(Integer amount){
         if(quantity > 0)

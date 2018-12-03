@@ -94,7 +94,8 @@ public class Product {
             throw new IllegalArgumentException("Cannot sell "+ this.model +" with no inventory");
 
     }
+
     public String toString(){
-        return String.format("%s, %s, %s, %s, %s",make,model, variant,year,price);
+        return String.format("%s, %s, %s, %s, %s, %s",make,model,variant, year, quantity,price);
     }
 }

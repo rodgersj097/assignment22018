@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Inventory {
 
-   public static TreeMap<String, LinkedList<Product>> inventoryMap = new TreeMap<>();
-    LinkedList<Product> linkedList = new LinkedList<>();
+    private static TreeMap<String, LinkedList<Product>> inventoryMap = new TreeMap<>();
+
 
     public static void loadProducts() {
 
@@ -45,7 +45,7 @@ public class Inventory {
         addProduct("Laptop", lap1);
         addProduct("Laptop", lap2);
         addProduct("Laptop", lap3);
-        addProduct("Lapto", lap4);
+        addProduct("Laptop", lap4);
         addProduct("Laptop", lap5);
 
         addProduct("Phones", phone1);
@@ -72,6 +72,7 @@ public class Inventory {
         addProduct("Cameras", cam5);
 
     }
+
     public static void addProduct(String category, Product product) {
         if (!inventoryMap.keySet().contains(category)) {
             inventoryMap.put(category, new LinkedList<>());
@@ -82,21 +83,20 @@ public class Inventory {
     }
 
     public static List getAllCategories() {
-
-        List category = new ArrayList<>();
-        for (Map.Entry m : inventoryMap.entrySet())
-            category.add( m.getKey());
-        return category;
+        List products = new ArrayList<>();
+        for (Map.Entry<String, LinkedList<Product>> m : inventoryMap.entrySet())
+            products.add(m.getKey());
+        return products;
     }
 
 
-    public static List<Product> getAllProducts() {
-        List product = new ArrayList<>();
-        for (Map.Entry m : inventoryMap.entrySet())
-            product.add(m.getValue());
-         return product;
+    public static List getAllProducts() {
+        List products = new ArrayList<>();
+        for (Map.Entry<String, LinkedList<Product>> m : inventoryMap.entrySet()) {
+            products.addAll(m.getValue());
+        }
+        return products;
     }
-
 
     public static List getProductFromCategory(String category) {
         List product = new ArrayList<>();

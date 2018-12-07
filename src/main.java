@@ -22,9 +22,6 @@ public class main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
-        List list = Inventory.getProductFromCategory("Phones");
-
-        System.out.println(Inventory.getProductFromCategory("Cameras"));
 
 
 

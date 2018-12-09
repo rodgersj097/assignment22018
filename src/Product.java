@@ -87,9 +87,9 @@ public class Product {
 
 
 
-    public void sellProduct(Integer amount){
+    public void sellProduct(){
         if(quantity > 0)
-           this.quantity -= amount;
+           this.quantity -= 1;
         else
             throw new IllegalArgumentException("Cannot sell "+ this.model +" with no inventory");
 

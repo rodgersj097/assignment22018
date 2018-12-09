@@ -1,5 +1,4 @@
 import javafx.scene.image.Image;
-
 import java.util.*;
 
 public class Inventory {
@@ -8,7 +7,6 @@ public class Inventory {
 
 
     public static void loadProducts() {
-
 
         //List of laptops
         Product lap1 = new Product("Acer", "Aspire", "15.6 inch | 32GB | i5-4300", 699.99, 2018, 5, new Image("Images\\AcerAspire13.jpg"));
@@ -48,21 +46,21 @@ public class Inventory {
         addProduct("Laptop", lap4);
         addProduct("Laptop", lap5);
 
-        addProduct("Phones", phone1);
         addProduct("Phones", phone2);
-        addProduct("Phones", phone3);
+        addProduct("Phones", phone1);
         addProduct("Phones", phone4);
+        addProduct("Phones", phone3);
 
         addProduct("Desktop", Desk1);
-        addProduct("Desktop", Desk2);
-        addProduct("Desktop", Desk3);
         addProduct("Desktop", Desk4);
         addProduct("Desktop", Desk5);
+        addProduct("Desktop", Desk2);
+        addProduct("Desktop", Desk3);
 
-        addProduct("All in One`s", aio1);
-        addProduct("All in One`s", aio2);
         addProduct("All in One`s", aio3);
         addProduct("All in One`s", aio4);
+        addProduct("All in One`s", aio1);
+        addProduct("All in One`s", aio2);
         addProduct("All in One`s", aio5);
 
         addProduct("Cameras", cam1);
@@ -102,7 +100,7 @@ public class Inventory {
         List product = new ArrayList<>();
         for (Map.Entry m : inventoryMap.entrySet()) {
             if (m.getKey().equals(category)) {
-                product.add(m.getValue());
+                product.addAll((Collection) m.getValue());
             }
         }
         return product;

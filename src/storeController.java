@@ -1,4 +1,6 @@
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -63,7 +65,7 @@ public class storeController implements Initializable {
 
         //loads image of the selected listview item
         listView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
+                (observable, oldValue ,  newValue) -> {
                     if (newValue != null) {
                         imageView.setImage(newValue.getImage());
                     }
@@ -95,22 +97,18 @@ public class storeController implements Initializable {
                 }
         );
 
-
-
         //use product.SellProduct to sell item
-        if(sellButton.isPressed()) {
-            listView.getSelectionModel().getSelectedItem().sellProduct();
+        sellButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                listView.getSelectionModel().getSelectedItem().sellProduct();
 
-        }
-
-
-
+            }
+        });
 
         //run methods on initialize
-
         getCatTotal();
         getInvTotal();
-
         loadProductByCategory();
 
     }
@@ -138,14 +136,14 @@ public class storeController implements Initializable {
      *  load listview with category products when combobox is selected
      */
     public void loadProductByCategory(){
-
         categoryComboBox.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    if (newValue != null)
+                    if (newValue != null) {
                         listView.getItems().clear();
-                    listView.getItems().addAll(Inventory.getProductFromCategory(newValue));
-                    getCatTotal();
-                    listView.getSelectionModel().select(0);
+                        listView.getItems().addAll(Inventory.getProductFromCategory(newValue));
+                        getCatTotal();
+                        listView.getSelectionModel().select(0);
+                    }
                 }
         );
     }

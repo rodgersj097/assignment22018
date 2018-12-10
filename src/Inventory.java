@@ -80,6 +80,10 @@ public class Inventory {
         }
     }
 
+    /**
+     * get all categories in the treemap by returnin the keys
+     * @return
+     */
     public static List getAllCategories() {
         List products = new ArrayList<>();
         for (Map.Entry<String, LinkedList<Product>> m : inventoryMap.entrySet())
@@ -87,7 +91,10 @@ public class Inventory {
         return products;
     }
 
-
+    /**
+     * return all products in the treemap by returning the values
+     * @return
+     */
     public static List getAllProducts() {
         List products = new ArrayList<>();
         for (Map.Entry<String, LinkedList<Product>> m : inventoryMap.entrySet()) {
@@ -96,6 +103,11 @@ public class Inventory {
         return products;
     }
 
+    /**
+     * return the products associated by they category selected by returning values by keys
+     * @param category
+     * @return List
+     */
     public static List getProductFromCategory(String category) {
         List product = new ArrayList<>();
         for (Map.Entry m : inventoryMap.entrySet()) {

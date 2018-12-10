@@ -62,7 +62,10 @@ public class Product {
     }
 
     public Integer getYear() {
-        return year;
+        if(year < 1936)
+            throw new IllegalArgumentException("The first computer was invented in 1936, therefore it should not be in the electronics store");
+        else
+            return year;
     }
 
     public void setYear(Integer year) {
@@ -70,6 +73,9 @@ public class Product {
     }
 
     public Integer getQuantity() {
+        if(quantity < 1 )
+            throw new IllegalArgumentException("You cannot add a item with 0 quantity");
+        else
         return quantity;
     }
 
@@ -82,11 +88,16 @@ public class Product {
     }
 
     public void setImage(Image image) {
-        this.image = image;
+        if ( image.getUrl().isEmpty())
+            throw new IllegalArgumentException("Cannot add a image without a url");
+        else
+         this.image = image;
     }
 
 
-
+    /**
+     * sells a the selected product and reduces quantity by 1
+     */
     public void sellProduct(){
         if(quantity > 0)
            this.quantity -= 1;
@@ -95,6 +106,10 @@ public class Product {
 
     }
 
+    /**
+     * formats how the products display in the listview
+     * @return
+     */
     public String toString(){
         return String.format("%s, %s, %s, %s, %s, %s",make,model,variant, year, quantity,price);
     }

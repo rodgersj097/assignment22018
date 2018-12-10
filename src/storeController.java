@@ -63,6 +63,10 @@ public class storeController implements Initializable {
         //initialize first object selected
         listView.getSelectionModel().select(0);
 
+        //make lables blank
+        invTotal.setText("");
+        catTotal.setText("");
+
         //loads image of the selected listview item
         listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue ,  newValue) -> {
@@ -117,19 +121,26 @@ public class storeController implements Initializable {
      * runs through listview for the category and sums price * quantity for each item witha stream
      */
     public void getCatTotal(){
-        catTotal.setText(String.valueOf(listView.getItems().stream().map(
+        if(categoryComboBox.getSelectionModel().getSelectedItem() != null) {
+        catTotal.setText("$" + String.valueOf(listView.getItems().stream().map(
                 p-> {
                     return p.getQuantity() * p.getPrice();
                 }).collect(Collectors.summingDouble(p -> p))) );
+        }else {
+            invTotal.setText("");
+        }
     }
     /**
      * runs through the entire listview and sums price * quantity for each item witha stream
      */
     public void getInvTotal() {
-        invTotal.setText(String.valueOf(listView.getItems().stream().map(
-                p -> {
-                    return p.getQuantity() * p.getPrice();
-                }).collect(Collectors.summingDouble(p -> p))));
+
+            invTotal.setText("$" + String.valueOf(listView.getItems().stream().map(
+                    p -> {
+                        return p.getQuantity() * p.getPrice();
+                    }).collect(Collectors.summingDouble(p -> p))));
+
+
     }
 
     /**

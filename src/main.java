@@ -20,6 +20,7 @@ public class main extends Application {
        Inventory.loadProducts();
         Parent root = FXMLLoader.load(getClass().getResource("store.fxml"));
         primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("Electronics Store");
         primaryStage.show();
 
 

@@ -84,11 +84,8 @@ public class Inventory {
      * get all categories in the treemap by returnin the keys
      * @return
      */
-    public static List getAllCategories() {
-        List products = new ArrayList<>();
-        for (Map.Entry<String, LinkedList<Product>> m : inventoryMap.entrySet())
-            products.add(m.getKey());
-        return products;
+    public static Set getAllCategories() {
+        return inventoryMap.keySet();
     }
 
     /**
